@@ -1,0 +1,25 @@
+
+services:
+  db:
+    image: postgres:17
+    container_name: bakalarka_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: bakalarka
+      POSTGRES_PASSWORD: local_dev_password
+      POSTGRES_DB: bakalarka
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: codeassess-mailpit
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025"
+      - "127.0.0.1:1025:1025"
+
+volumes:
+  postgres_data:

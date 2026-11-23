@@ -1,0 +1,35 @@
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Frontend
+node_modules/
+dist/
+.vite/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Local databases
+*.db
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
