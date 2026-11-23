@@ -120,3 +120,20 @@ class InvitationResponse(BaseModel):
 
 class InvitationAccept(BaseModel):
     token: str = Field(min_length=1)
+
+
+MAX_SUBMISSION_BYTES = 1_000_000
+
+
+class SubmissionCreate(BaseModel):
+    code: str = Field(min_length=1)
+
+
+class SubmissionResponse(BaseModel):
+    id: int
+    assignment_id: int
+    code: str
+    status: str
+    submitted_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)

@@ -4,6 +4,7 @@ from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from submissions_routes import router as submissions_router
 from auth_dependencies import current_user, require_teacher
 from auth_routes import router as auth_router
 from database import engine, get_db
@@ -17,6 +18,7 @@ from schemas import (
 app = FastAPI(title="Bakalarka API")
 app.include_router(auth_router)
 app.include_router(invitations_router)
+app.include_router(submissions_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://localhost:5174",
