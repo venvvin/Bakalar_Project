@@ -7,6 +7,7 @@ import {
 import Sidebar from "../components/Sidebar";
 import { api } from "../api/client";
 import { useAuth } from "../auth/AuthContext";
+import SubmissionsPanel from "../components/SubmissionsPanel";
 
 type Assignment = {
     id: number;
@@ -241,15 +242,11 @@ export default function AssignmentDetail() {
                             </section>
                         )}
 
-                        {!canManageTests && (
-                            <section className="ca-panel ca-detail-panel">
-                                <div className="ca-panel-top">02 / INFORMÁCIE</div>
-                                <div className="ca-content-pad">
-                                    <p className="ca-muted">
-                                        Testovacie prípady nie sú v tomto zobrazení dostupné.
-                                    </p>
-                                </div>
-                            </section>
+                        {user?.role === "STUDENT" && (
+                            <SubmissionsPanel
+                                key={assignment.id}
+                                assignmentId={assignment.id}
+                            />
                         )}
                     </>
                 )}
